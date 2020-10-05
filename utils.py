@@ -11,8 +11,7 @@ def terminal_print(header, body):
 
 
 def export_csv(header, table, file_name):
-    print(file_name)
-    for t in table:
+    for _ in table:
         with open(file_name, "w") as newfile:
             writer = csv.DictWriter(newfile, header)
             writer.writeheader()
