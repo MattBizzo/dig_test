@@ -20,3 +20,6 @@ def export_csv(header, table, file_name):
                 if row:
                     writer.writerow(row)
 
+def export_json(table, file_name):
+    with open(file_name, 'w') as newfile:
+        json.dump(table, newfile)

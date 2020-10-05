@@ -43,3 +43,7 @@ class Vultr():
         self.get_data()
         utils.export_csv(self.header, self.body, 'vultr.csv')
 
+    def create_json(self):
+        self.get_data()
+        utils.export_json(self.body, 'vultr.json')
+
