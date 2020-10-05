@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup, NavigableString
 import requests
 
+import utils
+
 def tag_cleaning(tag, pos):
     words = ['Geekbench Score', 'SSD', '_', 'Ram', 'Bandwidth', '_']
     tag = tag.replace("\t", '').replace('\n', '')
@@ -35,9 +37,9 @@ class Vultr():
     def terminal_print(self):
         self.get_data()
 
-        print(f'{self.header[0]:<10} {self.header[1]:<10} {self.header[2]:<10} {self.header[3]:<10} {self.header[4]:<10} {self.header[5]:<10}')
-        print('==============================================================')
+        utils.terminal_print(self.header, self.body)
+    
+    def create_csv(self):
+        self.get_data()
+        utils.export_csv(self.header, self.body, 'vultr.csv')
 
-        for b in self.body:
-            bench, storage, cpu, mem, band, price = b.values()
-            print(f'{bench:<10} {storage:<10} {cpu:<10} {mem:<10} {band:<10} {price:<10}')
